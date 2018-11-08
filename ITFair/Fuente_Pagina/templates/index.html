@@ -32,14 +32,21 @@
                 <button type="button" class="btn btn-light color-azul" style="width: 10rem">Informacion</button>
             </div>
 
+            {% if user.is_authenticated %}
             <div class="col-12 col-sm-2" style="padding: 5px">
-                <a class="btn btn-light color-azul" style="width: 10rem" href="{% url "login" %}">Iniciar Sesión</a>
-            </div> 
+                    <a class="btn btn-light color-azul" style="width: 10rem" href="{% url "cerrar_sesion" %}">Cerrar Sesión</a>
+                </div> 
+            {% else %}
+            <div class="col-12 col-sm-2" style="padding: 5px">
+                    <a class="btn btn-light color-azul" style="width: 10rem" href="{% url "login" %}">Iniciar Sesión</a>
+                </div> 
+            {% endif %}
+            
             
         </div>
     </nav>
 
-
+  
     <!-- Seccion de bienvenida para tercera edad -->
     <div class="container" style="text-align: center; padding-top: 2rem">
         <div class="row">

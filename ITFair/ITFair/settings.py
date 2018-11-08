@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'xkywwspt',
         'USER': 'xkywwspt',
         'PASSWORD': 'l1NayBDiejkZFHmmSkHzqyr1GajFrU4Q',
-        'HOST': 'stampy.db.elephantsql.com ',
+        'HOST': 'stampy.db.elephantsql.com',
         'PORT': '5432',
         
     }

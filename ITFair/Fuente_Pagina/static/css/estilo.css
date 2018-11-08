@@ -55,3 +55,7 @@
     max-height: 150px;
     margin-bottom: 1rem;
 }
+
+.error{
+    color: red
+}
