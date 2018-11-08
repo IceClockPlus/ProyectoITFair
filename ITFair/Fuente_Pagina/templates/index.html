@@ -16,7 +16,7 @@
     <nav class="navbar navbar-dark color-fondo-azul">
         <div class="container" style="text-align: center">
             <!-- Logo -->
-            <div class="col-12 col-sm-6" style="padding: 5px">
+            <div class="col-12 col-sm-4" style="padding: 5px">
                 <a class="navbar-brand" href="#"><i class="fas fa-graduation-cap color-blanco" style="padding-right: 1rem"></i>Educacion Cibernetica</a>
             </div>
             <!-- Boton 'Introduccion' -->
@@ -31,6 +31,11 @@
             <div class="col-12 col-sm-2" style="padding: 5px">
                 <button type="button" class="btn btn-light color-azul" style="width: 10rem">Informacion</button>
             </div>
+
+            <div class="col-12 col-sm-2" style="padding: 5px">
+                <a class="btn btn-light color-azul" style="width: 10rem" href="{% url "login" %}">Iniciar Sesión</a>
+            </div> 
+            
         </div>
     </nav>
 
@@ -72,13 +77,13 @@
             </div>
             <!-- Imagenes -->
             <div class="col-12 col-sm-4" style="padding: 1 rem">
-                <img src="img/adultomayor0.JPG" alt="img0" class="img-fluid img-thumbnail imagenes-col" style="object-fit:cover; object-position: 0% 20%">
+                <img src="{% static "img/adultomayor0.JPG" %}" alt="img0" class="img-fluid img-thumbnail imagenes-col" style="object-fit:cover; object-position: 0% 20%">
             </div>
             <div class="col-12 col-sm-4" style="padding: 1 rem">
-                <img src="img/adultomayor1.JPG" alt="img1" class="img-fluid img-thumbnail imagenes-col" style="object-fit:cover; object-position: 0% 10%">
+                <img src="{% static "img/adultomayor1.JPG" %}" alt="img1" class="img-fluid img-thumbnail imagenes-col" style="object-fit:cover; object-position: 0% 10%">
             </div>
             <div class="col-12 col-sm-4" style="padding: 1 rem">
-                <img src="img/adultomayor2.JPG" alt="img2" class="img-fluid img-thumbnail imagenes-col" style="object-fit:cover; object-position: 0% 100%">
+                <img src="{% static "img/adultomayor2.JPG" %}" alt="img2" class="img-fluid img-thumbnail imagenes-col" style="object-fit:cover; object-position: 0% 100%">
             </div>
             <!-- Flecha -->
             <div class="col-12" style="padding: 1 rem">
@@ -142,7 +147,7 @@
             <div class="row">
                 <!-- Logo DUOC -->
                 <div class="col-12" style="padding: 1rem">
-                    <img src="img/duoc-logo.png" alt="logoduoc" class="img-fluid" style="object-fit:cover; width: 200px;">
+                    <img src="{% static "img/duoc-logo.png" %}" alt="logoduoc" class="img-fluid" style="object-fit:cover; width: 200px;">
                 </div>
                 <!-- Informacion de proyecto -->
                 <div class="col-12" style="padding: 1rem">
