@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Clase {{lec.pk}}</title>
+    <title>Clase {{leccion.pk}}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -27,7 +27,7 @@
         <div class="row">
             <!-- Titulo -->
             <div class="col-12" style="padding: 1rem">
-                <h4 class="color-azul">Clase #02 - ¿Que significa este icono?</h4>
+                <h4 class="color-azul">{{leccion.titulo}}</h4>
             </div>
             <!-- Logo central -->
             <div class="col-12" style="padding: 1rem">
@@ -42,186 +42,35 @@
             <div class="col-12" style="padding: 1rem">
                 <!-- Explicacion -->
                 <div class="border border-primary color-azul" style="padding: 1rem">
-                    <p>Dentro de esta seccion podras encontrar definiciones para algunos simbolos que podras encontrar en la web.</p> 
+                    <p>{{leccion.resumen}}</p> 
                 </div>
             </div>
         </div>
     </div>
+    
 
     <!-- Coleccion de definiciones -->
     <div class="container" style="text-align: center;">
         <div class="row">
-            <!-- Explicacion 3barras -->
-            <div class="col-12 col-sm-6 col-md-4" style="padding: 1rem">
-                    <div class="container">
-                        <div class="row border border-primary color-azul" style="padding: 1rem;">
-                            <div class="col-12">
-                                <h3>"Menu"</h3>
+            {% for i in items %}
+                <div class="col-12 col-sm-6 col-md-4" style="padding: 1rem">
+                        <div class="container">
+                            <div class="row border border-primary color-azul" style="padding: 1rem;">
+                                <div class="col-12">
+                                    <h3>{{i.titulo}}</h3>
+                                </div>
+                                <div class="col-12">
+                                    <i class="fas fa-bars color-azul fa-6x"></i>
+                                </div>
                             </div>
+                        <div class="row border border-primary color-azul" style="padding: 1rem; height: 300px;">
                             <div class="col-12">
-                                <i class="fas fa-bars color-azul fa-6x"></i>
-                            </div>
-                        </div>
-                    <div class="row border border-primary color-azul" style="padding: 1rem; height: 300px;">
-                        <div class="col-12">
-                            <p>Si presionas este icono se desplegara un menu con varias opciones de la aplicacion.</p>
-                            <p>Este boton se encuentra usualmente en rincones de la pantalla.</p> 
-                        </div>
-                    </div>
-                </div>        
-            </div>
-            
-            <!-- Explicacion correo -->
-            <div class="col-12 col-sm-6 col-md-4" style="padding: 1rem">
-                    <div class="container">
-                        <div class="row border border-primary color-azul" style="padding: 1rem;">
-                            <div class="col-12">
-                                <h3>"Correo"</h3>
-                            </div>
-                            <div class="col-12">
-                                <i class="fas fa-envelope-square color-azul fa-6x"></i>
+                                <p>{{i.resumen}}</p> 
                             </div>
                         </div>
-                    <div class="row border border-primary color-azul" style="padding: 1rem; height: 300px;">
-                        <div class="col-12">
-                            <p>Botones con este icono usualmente te guiaran a tu correo electronico.</p>
-                        </div>
-                    </div>
-                </div>        
-            </div>
-            
-            <!-- Explicacion facebook -->
-            <div class="col-12 col-sm-6 col-md-4" style="padding: 1rem">
-                    <div class="container">
-                        <div class="row border border-primary color-azul" style="padding: 1rem;">
-                            <div class="col-12">
-                                <h3>"Facebook"</h3>
-                            </div>
-                            <div class="col-12">
-                                <i class="fab fa-facebook color-azul fa-6x"></i>
-                            </div>
-                        </div>
-                    <div class="row border border-primary color-azul" style="padding: 1rem; height: 300px;">
-                        <div class="col-12">
-                            <p>Botones con este simbolo abriran ventanas que contectan a la red social "Facebook".</p>
-                        </div>
-                    </div>
-                </div>        
-            </div>
-
-            <!-- Explicacion twitter -->
-            <div class="col-12 col-sm-6 col-md-4" style="padding: 1rem">
-                    <div class="container">
-                        <div class="row border border-primary color-azul" style="padding: 1rem;">
-                            <div class="col-12">
-                                <h3>"Twitter"</h3>
-                            </div>
-                            <div class="col-12">
-                                <i class="fab fa-twitter color-azul fa-6x"></i>
-                            </div>
-                        </div>
-                    <div class="row border border-primary color-azul" style="padding: 1rem; height: 300px;">
-                        <div class="col-12">
-                            <p>Botones con este simbolo abriran ventanas que contectan a la red social "Twitter".</p>
-                        </div>
-                    </div>
-                </div>        
-            </div>
-            
-            <!-- Explicacion instagram -->
-            <div class="col-12 col-sm-6 col-md-4" style="padding: 1rem">
-                    <div class="container">
-                        <div class="row border border-primary color-azul" style="padding: 1rem;">
-                            <div class="col-12">
-                                <h3>"Instagram"</h3>
-                            </div>
-                            <div class="col-12">
-                                <i class="fab fa-instagram color-azul fa-6x"></i>
-                            </div>
-                        </div>
-                    <div class="row border border-primary color-azul" style="padding: 1rem; height: 300px;">
-                        <div class="col-12">
-                            <p>Botones con este simbolo abriran ventanas que contectan a la red social "Instagram".</p>
-                        </div>
-                    </div>
-                </div>        
-            </div>
-
-            <!-- Explicacion youtube -->
-            <div class="col-12 col-sm-6 col-md-4" style="padding: 1rem">
-                    <div class="container">
-                        <div class="row border border-primary color-azul" style="padding: 1rem;">
-                            <div class="col-12">
-                                <h3>"Youtube"</h3>
-                            </div>
-                            <div class="col-12">
-                                <i class="fab fa-youtube color-azul fa-6x"></i>
-                            </div>
-                        </div>
-                    <div class="row border border-primary color-azul" style="padding: 1rem; height: 300px;">
-                        <div class="col-12">
-                            <p>Botones con este simbolo abriran ventanas que contectan al sitio de videos "Youtube".</p>
-                        </div>
-                    </div>
-                </div>        
-            </div>
-
-            <!-- Explicacion Ajustes -->
-            <div class="col-12 col-sm-6 col-md-4" style="padding: 1rem">
-                    <div class="container">
-                        <div class="row border border-primary color-azul" style="padding: 1rem;">
-                            <div class="col-12">
-                                <h3>"Ajustes"</h3>
-                            </div>
-                            <div class="col-12">
-                                <i class="fas fa-cog color-azul fa-6x"></i>
-                            </div>
-                        </div>
-                    <div class="row border border-primary color-azul" style="padding: 1rem; height: 300px;">
-                        <div class="col-12">
-                            <p>Botones con simbolos similares a estos son usados para ajustar opciones en una aplicacion.</p>
-                        </div>
-                    </div>
-                </div>        
-            </div>
-
-            <!-- Explicacion Camera -->
-            <div class="col-12 col-sm-6 col-md-4" style="padding: 1rem">
-                    <div class="container">
-                        <div class="row border border-primary color-azul" style="padding: 1rem;">
-                            <div class="col-12">
-                                <h3>"Fotos"</h3>
-                            </div>
-                            <div class="col-12">
-                                <i class="fas fa-camera color-azul fa-6x"></i>
-                            </div>
-                        </div>
-                    <div class="row border border-primary color-azul" style="padding: 1rem; height: 300px;">
-                        <div class="col-12">
-                            <p>Botones con simbolos similares a este puede ayudarte a sacar fotos o ver cuales fotos has sacado.</p>
-                        </div>
-                    </div>
-                </div>        
-            </div>
-
-            <!-- Explicacion Grabar -->
-            <div class="col-12 col-sm-6 col-md-4" style="padding: 1rem">
-                    <div class="container">
-                        <div class="row border border-primary color-azul" style="padding: 1rem;">
-                            <div class="col-12">
-                                <h3>"Grabar"</h3>
-                            </div>
-                            <div class="col-12">
-                                <i class="fas fa-video color-azul fa-6x"></i>
-                            </div>
-                        </div>
-                    <div class="row border border-primary color-azul" style="padding: 1rem; height: 300px;">
-                        <div class="col-12">
-                            <p>Botones con simbolos similares a este puede ayudarte a grabar videos con la camara de tu celular.</p>
-                        </div>
-                    </div>
-                </div>        
-            </div>
+                    </div>        
+                </div>
+            {% endfor %}
 
         </div>
     </div> 
@@ -233,7 +82,7 @@
             <div class="row">
                 <!-- Logo DUOC -->
                 <div class="col-12" style="padding: 1rem">
-                    <img src="img/duoc-logo.png" alt="logoduoc" class="img-fluid" style="object-fit:cover; width: 200px;">
+                    <img src="{% static "img/duoc-logo.png" %}" alt="logoduoc" class="img-fluid" style="object-fit:cover; width: 200px;">
                 </div>
                 <!-- Informacion de proyecto -->
                 <div class="col-12" style="padding: 1rem">

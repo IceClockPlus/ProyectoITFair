@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Leccion
+from .models import Leccion, ItemLeccion
 
 # Create your views here.
 def index(request):
@@ -9,5 +9,6 @@ def clase2(request):
     return render(request,'clase2.html')
 
 def clase(request, id):
-    lec = Lecciones.objects.get(pk = id)
-    return render(request,'clases.html',{lec})
+    lec = Leccion.objects.get(pk = id)
+    items = ItemLeccion.objects.filter(leccion = lec)
+    return render(request,'clases.html',{'leccion':lec,'items':items})
