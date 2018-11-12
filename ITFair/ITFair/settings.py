@@ -74,17 +74,6 @@ WSGI_APPLICATION = 'ITFair.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'xkywwspt',
-        'USER': 'xkywwspt',
-        'PASSWORD': 'l1NayBDiejkZFHmmSkHzqyr1GajFrU4Q',
-        'HOST': 'stampy.db.elephantsql.com',
-        'PORT': '5432',
-        
-    }
-}
 
 
 # Password validation
