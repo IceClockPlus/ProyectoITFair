@@ -31,7 +31,12 @@
             </div>
             <!-- Logo central -->
             <div class="col-12" style="padding: 1rem">
-                <i class="fas fa-bars color-azul fa-8x"></i>
+                <img src="{{leccion.icono.url}}" alt="Foto">
+            </div>
+            <div class="col-12" style="padding: 1rem">
+                <iframe width="420" height="315"
+                src="{{leccion.video}}">
+                </iframe> 
             </div>
         </div>
     </div>
@@ -60,7 +65,7 @@
                                     <h3>{{i.titulo}}</h3>
                                 </div>
                                 <div class="col-12">
-                                    <i class="fas fa-bars color-azul fa-6x"></i>
+                                    <img src="{{i.icono.url}}" alt="Foto">
                                 </div>
                             </div>
                         <div class="row border border-primary color-azul" style="padding: 1rem; height: 300px;">
