@@ -56,7 +56,6 @@
     margin-bottom: 1rem;
 }
 
-<<<<<<< HEAD
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -79,8 +78,8 @@
 
 #img-upload{
     width: 10%;
-=======
+}
+    
 .error{
     color: red
->>>>>>> Login
 }

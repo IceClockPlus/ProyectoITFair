@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 $(document).ready( function() {
     $(document).on('change', '.btn-file :file', function() {
     var input = $(this),
@@ -34,7 +33,7 @@ $(document).ready( function() {
         readURL(this);
     }); 	
 });
-=======
+
 $(function(){
     $("#formLogin").validate({
         rules:{
@@ -56,4 +55,3 @@ $(function(){
     })
 
 })
->>>>>>> Login
