@@ -6,13 +6,14 @@ from .utils import conseguir_id_youtube
 
 # Create your views here.
 def index(request):
-    return render(request,'index.html')
+    lec = Leccion.objects.all()
+    return render(request,'index.html',{'lecciones':lec})
 
 def clase2(request):
     return render(request,'clase2.html')
 
-def clase(request, id):
-    lec = Leccion.objects.get(pk = id)
+def clase(request, miurl):
+    lec = Leccion.objects.get(url = miurl)
     items = ItemLeccion.objects.filter(leccion = lec)
     return render(request,'clases.html',{'leccion':lec,'items':items})
 
@@ -32,7 +33,7 @@ def crear_clase(request):
 
     lec = Leccion(titulo=nombre,resumen=descripcion,icono=imgInp,video=ylink)
     lec.save()
-    return redirect('nueva_clase')
+    return redirect('lista_clases')
 
 def nuevo_item(request):
     lec = Leccion.objects.all()
@@ -45,4 +46,18 @@ def crear_item(request):
     lec = Leccion.objects.filter(pk=request.POST.get('leccion'))[0]
     item = ItemLeccion(titulo=nombre,resumen=descripcion,icono=imgInp,leccion=lec)
     item.save()
-    return redirect('nuevo_item')
+    return redirect('lista_items',id=lec.pk)
+
+def lista_clases(request):
+    lec = Leccion.objects.all()
+    return render(request,'listaclases.html',{'lecciones':lec})
+
+def eliminar_clase(request, id):
+    lec = Leccion.objects.filter(pk = id)[0]
+    lec.delete()
+    return redirect('index')
+
+def lista_items(request, id):
+    lec = Leccion.objects.filter(pk = id)[0]
+    item = ItemLeccion.objects.filter(leccion = lec)
+    return render(request,'listaitems.html',{'items':item,'leccion':lec})
