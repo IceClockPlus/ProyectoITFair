@@ -55,3 +55,13 @@ $(function(){
     })
 
 })
+
+function editar(titulo,resumen,id,icono,video){
+    console.log("Editando")
+    $("#tituloModal").html("Editando clase: " + titulo)
+    $("#titulo").val(titulo)
+    $("#resumen").val(resumen)
+    $("#id").val(id)
+    $("#imagenDeModal").attr("src",icono)
+    $("#video").val(video)
+}

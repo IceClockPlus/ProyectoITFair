@@ -17,7 +17,7 @@
         <div class="container" style="text-align: center">
             <!-- Logo -->
             <div class="col-12 col-sm-6" style="padding: 5px">
-                <a class="navbar-brand" href="#"><i class="fas fa-graduation-cap color-blanco" style="padding-right: 1rem"></i>Educacion Cibernetica</a>
+                <a class="navbar-brand" href="{% url 'index' %}"><i class="fas fa-graduation-cap color-blanco" style="padding-right: 1rem"></i>Educacion Cibernetica</a>
             </div>
             <!-- Boton 'Introduccion' -->
             <div class="col-12 col-sm-2" style="padding: 5px">
@@ -53,7 +53,7 @@
                         {% for i in lecciones %}
                         <tr>
                             <td>{{i.titulo}}</td>
-                            <td><a href=""><button class="btn btn-light color-azul">Editar</button></a></td>
+                            <td><button data-toggle="modal" data-target="#exampleModal" onclick="editar('{{i.titulo}}','{{i.resumen}}',{{i.pk}},'{{i.icono.url}}','{{i.video}}')" class="btn btn-light color-azul">Editar</button></td>
                             <td><a href="eliminar_clase/{{i.pk}}"><button class="btn btn-light color-azul">Eliminar</button></a></td>
                             <td><a href="lista_items/{{i.pk}}"><button class="btn btn-light color-azul">Editar items</button></a></td>
                         </tr>
@@ -80,6 +80,40 @@
             </div>
         </div>
     </footer>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="tituloModal">Editar clase:</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <img id="imagenDeModal" src="" alt="Foto de clase" style="width:300px">
+                <form action="editar_clase" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="titulo">Titulo:</label>
+                    <input required class="form-control" type="text" name="titulo" id="titulo">
+                    <label for="resumen">Resumen:</label>
+                    <input required class="form-control" type="text" name="resumen" id="resumen">
+    
+                    <input type="hidden" id="id" name="id" value="">
+    
+                    <label for="video">Video:</label>
+                    <input required class="form-control" type="text" name="video" id="video" placeholder="https://www.youtube.com/watch?v=">
+    
+                    <label for="imagen">Imagen de la clase:</label>
+                    <input class="form-control-file" type="file" name="imagen" id="imagen">
+    
+                    <input type="submit" value="Editar" class="btn btn-light color-azul">
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
     
     
     <script src="{% static "js/jquery-3.3.1.js" %}"></script>

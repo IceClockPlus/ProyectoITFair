@@ -59,12 +59,28 @@ def lista_clases(request):
 def eliminar_clase(request, id):
     lec = Leccion.objects.filter(pk = id)[0]
     lec.delete()
-    return redirect('index')
+    return redirect('lista_clases')
 
 def lista_items(request, id):
     lec = Leccion.objects.filter(pk = id)[0]
     item = ItemLeccion.objects.filter(leccion = lec)
     return render(request,'listaitems.html',{'items':item,'leccion':lec})
+
+def editar_clase(request):
+    lec = Leccion.objects.filter(pk = request.POST.get('id',''))[0]
+    lec.titulo = request.POST.get('titulo','')
+    lec.resumen = request.POST.get('resumen','')
+    lec.icono = request.FILES['imagen']
+    youtube_id = request.POST.get('video','')
+    if youtube_id is not None:
+        ylink = "http://www.youtube.com/embed/" + conseguir_id_youtube(youtube_id)
+    else:
+        return redirect('lista_clases')
+    lec.video = ylink
+    lec.save()
+    
+    return redirect('lista_clases')
+    
     
 
 def login(request):
