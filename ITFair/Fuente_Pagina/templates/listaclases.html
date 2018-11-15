@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Educacion Cibernetica</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}" type="text/css">
+</head>
+<body>
+    <!-- Header (Logo y botones para ir a secciones principales) -->
+    <nav class="navbar navbar-dark color-fondo-azul">
+        <div class="container" style="text-align: center">
+            <!-- Logo -->
+            <div class="col-12 col-sm-6" style="padding: 5px">
+                <a class="navbar-brand" href="#"><i class="fas fa-graduation-cap color-blanco" style="padding-right: 1rem"></i>Educacion Cibernetica</a>
+            </div>
+            <!-- Boton 'Introduccion' -->
+            <div class="col-12 col-sm-2" style="padding: 5px">
+                <button type="button" class="btn btn-light color-azul" style="width: 10rem">Introduccion</button>
+            </div>
+            <!-- Boton 'Clases' -->
+            <div class="col-12 col-sm-2" style="padding: 5px">
+                <button type="button" class="btn btn-light color-azul" style="width: 10rem">Clases</button>
+            </div>
+            <!-- Boton 'Informacion' -->
+            <div class="col-12 col-sm-2" style="padding: 5px">
+                <button type="button" class="btn btn-light color-azul" style="width: 10rem">Informacion</button>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Seccion para la creacion de lecciones -->
+    <div class="container" style="text-align: center; padding-top: 2rem; padding-bottom: 2rem">
+        <div class="container" style="text-align: center; padding-top: 2rem">
+            <div class="row">
+                <a href="{% url 'nueva_clase' %}"><button class="btn btn-light color-azul">Crear clase</button></a>
+            </div>
+            <div class="row">
+                <div class="col-12" style="padding: 1rem">
+                    <table>
+                        <tr>
+                            <th>Nombre de la clase:</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                            <th>Editar items</th>
+                        </tr>
+                        {% for i in lecciones %}
+                        <tr>
+                            <td>{{i.titulo}}</td>
+                            <td><a href=""><button class="btn btn-light color-azul">Editar</button></a></td>
+                            <td><a href="eliminar_clase/{{i.pk}}"><button class="btn btn-light color-azul">Eliminar</button></a></td>
+                            <td><a href="lista_items/{{i.pk}}"><button class="btn btn-light color-azul">Editar items</button></a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer con informacion extra -->
+    <footer class="color-fondo-azul">
+        <div class="container" style="padding-top:1rem; padding-bottom: 10rem">
+            <div class="row">
+                <!-- Logo DUOC -->
+                <div class="col-12" style="padding: 1rem">
+                    <img src="{% static "img/duoc-logo.png" %}" alt="logoduoc" class="img-fluid" style="object-fit:cover; width: 200px;">
+                </div>
+                <!-- Informacion de proyecto -->
+                <div class="col-12" style="padding: 1rem">
+                    <h5 class="color-blanco">Desarrollo Aplicaciones Web y Mobile - S2 2018.</h5>
+                    <p class="color-blanco"> <b>Seccion 006D</b> - Felipe Moraga, Alexis Aravena, Mirko Ivanovich.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    
+    <script src="{% static "js/jquery-3.3.1.js" %}"></script>
+    <script src="{% static "js/popper.js" %}"></script>
+    <script src="{% static "js/bootstrap.js" %}"></script>
+    <script src="{% static "js/jquery.validate.js" %}"></script>
+    <script src="{% static "js/app.js" %}"></script>
+</body>
+</html>

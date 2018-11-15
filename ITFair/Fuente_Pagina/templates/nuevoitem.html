@@ -43,14 +43,14 @@
             </div>
         </div>
 
-        <form action="{% url 'crear_clase' %}" method="post" id="formularioClase" enctype="multipart/form-data">
+        <form action="{% url 'crear_item' %}" method="post" id="formularioClase" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="row">
 
             <!-- Titulo de la Clase -->
             <div class="col-12 border" style="padding: 1rem">
                 <div class="form-group">
-                    <b><label class="color-azul" for="nombre">Nombre de la Clase:</label></b> 
+                    <b><label class="color-azul" for="nombre">Nombre del item:</label></b> 
                     <br>
                     <input type="text" id="nombre" name="nombre" value="" class="inputs-width" style="width: 300px" placeholder="Insertar nombre.">
                 </div>
@@ -59,7 +59,7 @@
             <!-- Anadir Imagen de Clase -->
             <div class="col-12 border" style="padding: 1rem">
                 <div class="form-group">
-                    <b><label class="color-azul" for="imgInp">Imagen de la Clase:</label></b>
+                    <b><label class="color-azul" for="imgInp">Imagen del item:</label></b>
                     <br> 
                     <div style="padding: 8px"><i class="fas fa-image fa-5x color-azul"></i></div>
                     <br>
@@ -78,7 +78,7 @@
             <!-- Añadir Cuerpo de Clase -->
             <div class="col-12 border" style="padding: 1rem">
                 <div class="form-group">
-                    <b><label class="color-azul" for="descripcion">Descripcion de la Clase:</label></b>
+                    <b><label class="color-azul" for="descripcion">Descripcion del item:</label></b>
                     <br> 
                     <div style="padding: 8px"><i class="fas fa-pen-square fa-5x color-azul"></i></div>
                     <br>
@@ -91,12 +91,13 @@
             <!-- Añadir video de apoyo de clase -->
             <div class="col-12 border" style="padding: 1rem">
                 <div class="form-group">
-                    <b><label class="color-azul" for="ylink">Video de apoyo para la Clase:</label></b>
-                    <br> 
-                    <div style="padding: 8px"><i class="fab fa-youtube fa-5x color-azul"></i></div>
-                    <br>
+                    <b><label class="color-azul" for="ylink">Lección a la cual agregar el item</label></b>
                     <div class="col-md-12">
-                        <input type="text" id="ylink" name="ylink" value="" class="inputs-width" style="width: 300px" placeholder="https://www.youtube.com/watch?v="><i class="fas fa-link fa-2x color-azul"></i>
+                        <select name="leccion" id="leccion">
+                        {% for i in lecciones %}
+                        <option value="{{i.pk}}">{{i.titulo}}</option>
+                        {% endfor %}
+                        </select>
                     </div>
                 </div> 
             </div>
