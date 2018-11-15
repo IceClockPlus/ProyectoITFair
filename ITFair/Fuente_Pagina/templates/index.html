@@ -167,7 +167,11 @@
                 <div class="col-12" style="padding: 1rem">
                     <h5 class="color-blanco">Desarrollo Aplicaciones Web y Mobile - S2 2018.</h5>
                     <p class="color-blanco"> <b>Seccion 006D</b> - Felipe Moraga, Alexis Aravena, Mirko Ivanovich.</p>
+                    {% if user.is_authenticated%}
+                    <a class="color-blanco" href="{% url 'lista_clases' %}">Administrar Clases</a>
+                    {% endif %}
                 </div>
+                
             </div>
         </div>
     </footer>
