@@ -79,3 +79,7 @@
 #img-upload{
     width: 10%;
 }
+    
+.error{
+    color: red
+}

@@ -3,11 +3,15 @@ from django.http import HttpResponse
 from .models import Leccion, ItemLeccion
 from django.shortcuts import redirect
 from .utils import conseguir_id_youtube
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,logout, login as auth_login
+
 
 # Create your views here.
 def index(request):
     lec = Leccion.objects.all()
-    return render(request,'index.html',{'lecciones':lec})
+    usuario = request.session.get('usuarioActual',None)
+    return render(request,'index.html',{'lecciones':lec,'usuarioActual':usuario})
 
 def clase2(request):
     return render(request,'clase2.html')
@@ -61,3 +65,24 @@ def lista_items(request, id):
     lec = Leccion.objects.filter(pk = id)[0]
     item = ItemLeccion.objects.filter(leccion = lec)
     return render(request,'listaitems.html',{'items':item,'leccion':lec})
+    
+
+def login(request):
+    return render(request,'login.html')    
+
+def iniciar_sesion(request):
+    usuario = request.POST.get('usuario','')
+    contrasenia = request.POST.get('contrasenia','')
+
+    user = authenticate(request,username=usuario, password=contrasenia)
+    if user is not None:
+        auth_login(request,user)
+        request.session['usuarioActual'] = user.first_name +" "+user.last_name
+        return redirect('index')
+    else:
+        return redirect('login')        
+
+def cerrar_sesion(request):
+    del request.session['usuarioActual']
+    logout(request)
+    return redirect('index')
